@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dd3ddx2gv218"]
+[gd_scene load_steps=5 format=3 uid="uid://dd3ddx2gv218"]
 
 [ext_resource type="Texture2D" uid="uid://c08fs1xyd6lpl" path="res://Assets/Player.png" id="1_g2v3h"]
+[ext_resource type="Script" path="res://Player.gd" id="1_yy8oy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7lmvi"]
 animations = [{
@@ -17,6 +18,7 @@ animations = [{
 size = Vector2(16, 16)
 
 [node name="Node2D" type="CharacterBody2D"]
+script = ExtResource("1_yy8oy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7lmvi")
