@@ -23,5 +23,21 @@ script = ExtResource("1_yy8oy")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7lmvi")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Box" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_irtxu")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(38, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="AreaBox" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_irtxu")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 5.006
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
