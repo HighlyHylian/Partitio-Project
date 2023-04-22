@@ -31,7 +31,7 @@ func _ready() -> void:
 	pass
 
 func _draw() -> void:
-	if is_aiming:
+	if is_aiming or !controller or grappled:
 		var c := Color(1, 0, 0, 0.25)
 		var p := ray.target_position
 		if grappled:
@@ -50,7 +50,7 @@ func _process(_delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	is_aiming = false
 	if(!controller):
-		ray.target_position = to_local(get_viewport().get_mouse_position()).normalized() * GRAPPLE_LENGTH
+		ray.target_position = to_local(get_global_mouse_position()).normalized() * GRAPPLE_LENGTH
 	else:
 		var direction := Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
 		if !direction.is_zero_approx():
