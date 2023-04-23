@@ -28,7 +28,7 @@ var is_aiming: bool = false
 @onready var ray: RayCast2D = $RayCast2D
 
 func _ready() -> void:
-	pass
+	Engine.physics_jitter_fix = 0
 
 func _draw() -> void:
 	if is_aiming or !controller or grappled:
@@ -114,5 +114,6 @@ func _physics_process(delta: float) -> void:
 	
 
 
+@warning_ignore("unused_parameter")
 func _on_area_2d_body_entered(body):
 	died.emit()

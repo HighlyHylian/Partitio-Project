@@ -1,26 +1,38 @@
 [gd_scene load_steps=5 format=3 uid="uid://dd3ddx2gv218"]
 
-[ext_resource type="Texture2D" uid="uid://c08fs1xyd6lpl" path="res://Assets/Player.png" id="1_g2v3h"]
 [ext_resource type="Script" path="res://Player.gd" id="1_yy8oy"]
+[ext_resource type="Texture2D" uid="uid://c08fs1xyd6lpl" path="res://Assets/Player.png" id="2_5rsn3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7lmvi"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_g2v3h")
+"texture": ExtResource("2_5rsn3")
 }],
 "loop": true,
 "name": &"default",
+"speed": 1.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_irtxu"]
-size = Vector2(16, 16)
+size = Vector2(15, 16)
 
 [node name="Node2D" type="CharacterBody2D"]
+scale = Vector2(1.43665, 1.43665)
 script = ExtResource("1_yy8oy")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.930435, 1)
+texture = ExtResource("2_5rsn3")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(0.9375, 1)
 sprite_frames = SubResource("SpriteFrames_7lmvi")
 
 [node name="Box" type="CollisionShape2D" parent="."]
@@ -38,6 +50,6 @@ shape = SubResource("RectangleShape2D_irtxu")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
-position_smoothing_speed = 5.006
+position_smoothing_speed = 2.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
