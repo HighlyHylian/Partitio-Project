@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dynd3b6q2vown"]
+
+[ext_resource type="Script" path="res://Level.gd" id="1_ieyxf"]
+[ext_resource type="PackedScene" uid="uid://dd3ddx2gv218" path="res://Player.tscn" id="2_lamc6"]
+[ext_resource type="PackedScene" uid="uid://g6egdn5043j1" path="res://TileMapScene.tscn" id="3_todiq"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_ieyxf")
+
+[node name="PlayerSpawn" type="Node2D" parent="."]
+position = Vector2(118, 3)
+
+[node name="Player" parent="." instance=ExtResource("2_lamc6")]
+
+[node name="Stage" parent="." instance=ExtResource("3_todiq")]
+
+[connection signal="died" from="Player" to="." method="_on_player_died"]

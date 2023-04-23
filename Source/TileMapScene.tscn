@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://chrfv2eaynmui"]
+[gd_scene load_steps=6 format=3 uid="uid://g6egdn5043j1"]
 
 [ext_resource type="Texture2D" uid="uid://f3wc8speu6m4" path="res://Assets/TileSet.png" id="1_gj4bx"]
 [ext_resource type="Script" path="res://Stage.gd" id="2_vgrjh"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_if2jd"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i1uh7"]
 friction = 0.22
 bounce = 0.95
 
@@ -166,14 +166,14 @@ texture = ExtResource("1_gj4bx")
 0:3/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 0:3/0/physics_layer_1/angular_velocity = 0.0
 
-[sub_resource type="TileSet" id="TileSet_g7kcx"]
+[sub_resource type="TileSet" id="TileSet_14iq3"]
 physics_layer_0/collision_layer = 1
-physics_layer_0/physics_material = SubResource("PhysicsMaterial_if2jd")
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_i1uh7")
 physics_layer_1/collision_layer = 8
 physics_layer_1/collision_mask = 8
 sources/0 = SubResource("TileSetAtlasSource_5l8ey")
 
 [node name="Stage" type="TileMap"]
-tile_set = SubResource("TileSet_g7kcx")
+tile_set = SubResource("TileSet_14iq3")
 format = 2
 script = ExtResource("2_vgrjh")

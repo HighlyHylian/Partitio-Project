@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dd3ddx2gv218"]
+[gd_scene load_steps=10 format=3 uid="uid://dd3ddx2gv218"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_yy8oy"]
 [ext_resource type="Texture2D" uid="uid://c08fs1xyd6lpl" path="res://Assets/Player.png" id="2_5rsn3"]
+[ext_resource type="AudioStream" uid="uid://bv8qbxnmr25oc" path="res://Assets/Sounds/Player/jump.wav" id="3_y0scs"]
+[ext_resource type="AudioStream" uid="uid://kldu36wrps18" path="res://Assets/Sounds/Player/click.wav" id="4_j6usl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7lmvi"]
 animations = [{
@@ -22,7 +24,25 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_irtxu"]
 size = Vector2(15, 16)
 
-[node name="Node2D" type="CharacterBody2D"]
+[sub_resource type="Gradient" id="Gradient_jybjg"]
+offsets = PackedFloat32Array(0.651948, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nxe6x"]
+gradient = SubResource("Gradient_jybjg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4bowt"]
+emission_shape = 3
+emission_box_extents = Vector3(8.515, 1, 1)
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.0
+scale_max = 2.0
+color_ramp = SubResource("GradientTexture1D_nxe6x")
+
+[node name="Player" type="CharacterBody2D"]
 scale = Vector2(1.43665, 1.43665)
 script = ExtResource("1_yy8oy")
 
@@ -51,5 +71,18 @@ shape = SubResource("RectangleShape2D_irtxu")
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_y0scs")
+
+[node name="Click" type="AudioStreamPlayer2D" parent="."]
+scale = Vector2(1, 1)
+stream = ExtResource("4_j6usl")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0.696064, 8.35276)
+emitting = false
+amount = 26
+process_material = SubResource("ParticleProcessMaterial_4bowt")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

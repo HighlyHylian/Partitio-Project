@@ -25,6 +25,7 @@ var grapple_target: Node2D
 var retracting: bool = false
 var controller: bool = false
 var is_aiming: bool = false
+var can_slide: bool = true
 @onready var ray: RayCast2D = $RayCast2D
 
 func _ready() -> void:
@@ -72,6 +73,7 @@ func _physics_process(delta: float) -> void:
 			grappled = false
 	
 	elif retracted and ray.is_colliding():
+		$Click.play()
 		grappled = true
 		grapple_point = ray.get_collision_point()
 		grapple_target = ray.get_collider()
@@ -100,15 +102,24 @@ func _physics_process(delta: float) -> void:
 			else:
 				velocity.y = -JUMP_SPEED
 		else:
-			if is_on_floor():
+			if is_on_floor() or is_on_wall() and !is_zero_approx(axis):
 				jump_frames += 1
-				velocity.y = -JUMP_SPEED
+				velocity.y = -2 * JUMP_SPEED
 			else:
 				velocity.y += GRAVITY * delta
 	else:
 		jump_frames = 0
 		if !grappled:
-			velocity.y += GRAVITY * delta
+			if is_on_wall() and !is_zero_approx(axis):
+				$GPUParticles2D.emitting = true
+				velocity.y = GRAVITY * delta
+			else:
+				$GPUParticles2D.emitting = false
+				velocity.y += GRAVITY * delta
+		
+	if Input.is_action_just_pressed("jump"):
+		if is_on_floor() or is_on_wall() and !is_zero_approx(axis) and !grappled:
+			$Jump.play()
 	
 	move_and_slide()
 	
@@ -117,3 +128,4 @@ func _physics_process(delta: float) -> void:
 @warning_ignore("unused_parameter")
 func _on_area_2d_body_entered(body):
 	died.emit()
+
