@@ -24,7 +24,7 @@ var grapple_point: Vector2
 var grapple_target: Node2D
 @export var retracting: bool = false
 var retracted: bool = false
-var controller: bool = false
+@export var controller: bool = true
 var is_aiming: bool = false
 var can_slide: bool = true
 @onready var ray: RayCast2D = $RayCast2D

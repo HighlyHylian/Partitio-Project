@@ -21,10 +21,14 @@ func _ready():
 
 func _on_transition_scene_transitioned():
 	sceneNo+=1
+	if sceneNo == max_scene_no:
+		get_tree().quit()
 	var scene = sceneArray[sceneNo].instantiate()
 	scene.switch_levels.connect(on_switch_levels)
+	var useController = $CurrentScene/Level/Player.controller
 	$CurrentScene.get_child(0).queue_free()
 	$CurrentScene.add_child(scene)
+	$CurrentScene.get_child(0).get_child(0).controller = useController
 
 func on_switch_levels():
 	$TransitionScene.transition()
