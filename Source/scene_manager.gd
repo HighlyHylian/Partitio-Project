@@ -9,6 +9,8 @@ const level1 = preload("res://LevelG1.tscn")
 
 var sceneArray = [tutorialScene,level1]
 
+var max_scene_no = sceneArray.size()
+
 # Called every frame. 'delta' is the delapsed time since the previous frame.
 func _process(delta):
 	pass

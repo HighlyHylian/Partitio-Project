@@ -19,10 +19,11 @@ const RETRACT_ACCEL: float = SIZE * 50
 
 var jumping: bool = false
 var jump_frames: int = 0
-var grappled: bool = false
+@export var grappled: bool = false
 var grapple_point: Vector2
 var grapple_target: Node2D
-var retracting: bool = false
+@export var retracting: bool = false
+var retracted: bool = false
 var controller: bool = false
 var is_aiming: bool = false
 var can_slide: bool = true
@@ -64,7 +65,7 @@ func _physics_process(delta: float) -> void:
 	
 	
 	
-	var retracted: bool = Input.is_action_pressed("grapple")
+	retracted = Input.is_action_pressed("grapple")
 	var axis: float = Input.get_axis("left", "right")
 	
 	
@@ -103,9 +104,12 @@ func _physics_process(delta: float) -> void:
 				velocity.y = -JUMP_SPEED
 		else:
 			if is_on_floor() or is_on_wall() and !is_zero_approx(axis):
+				if is_on_wall() and !is_zero_approx(axis):
+					$GPUParticles2D.emitting = true
 				jump_frames += 1
 				velocity.y = -2 * JUMP_SPEED
 			else:
+				$GPUParticles2D.emitting = false
 				velocity.y += GRAVITY * delta
 	else:
 		jump_frames = 0
@@ -120,12 +124,15 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor() or is_on_wall() and !is_zero_approx(axis) and !grappled:
 			$Jump.play()
-	
 	move_and_slide()
 	
 
 
 @warning_ignore("unused_parameter")
 func _on_area_2d_body_entered(body):
-	died.emit()
+	emit_signal("died")
+	retracting = false
+	grappled = false
+	retracted = false
+	velocity = Vector2.ZERO
 
