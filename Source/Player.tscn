@@ -76,7 +76,6 @@ position_smoothing_speed = 2.0
 stream = ExtResource("3_y0scs")
 
 [node name="Click" type="AudioStreamPlayer2D" parent="."]
-scale = Vector2(1, 1)
 stream = ExtResource("4_j6usl")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
