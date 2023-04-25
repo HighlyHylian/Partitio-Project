@@ -24,7 +24,7 @@ var grapple_point: Vector2
 var grapple_target: Node2D
 @export var retracting: bool = false
 var retracted: bool = false
-@export var controller: bool = true
+@export var controller: bool = false
 var is_aiming: bool = false
 var can_slide: bool = true
 @onready var ray: RayCast2D = $RayCast2D
@@ -34,13 +34,13 @@ func _ready() -> void:
 
 func _draw() -> void:
 	if is_aiming or !controller or grappled:
-		var c := Color(1, 0, 0, 0.25)
+		var c := Color(1, 0, 0, .25)
 		var p := ray.target_position
 		if grappled:
-			c = Color.RED
+			c = Color.GREEN
 			p = to_local(grapple_point)
 		elif ray.is_colliding():
-			c = Color.DARK_RED
+			c = Color.DARK_GREEN
 			p = to_local(ray.get_collision_point())
 		draw_line(Vector2.ZERO, p, c)
 
