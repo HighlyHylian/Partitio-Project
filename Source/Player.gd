@@ -16,7 +16,9 @@ const RETRACT_SPEED_I: float = 0
 const RETRACT_SPEED_F: float = SIZE * 12
 const GRAPPLED_SPEED: float = SIZE * 9
 const RETRACT_ACCEL: float = SIZE * 50
+const WALLJUMP_SPEED:int = 150
 
+var coyote_frames: int = 0
 var jumping: bool = false
 var jump_frames: int = 0
 @export var grappled: bool = false
@@ -86,10 +88,13 @@ func _physics_process(delta: float) -> void:
 #			velocity = velocity.normalized() * RETRACT_SPEED_F
 #		move_and_slide()
 #		return
+
+	coyote_frames = coyote_frames - 1
 	
 	if !is_on_floor():
 		velocity.x = clamp(velocity.x + PLAYER_AIR_ACCEL * delta * axis, -RETRACT_SPEED_F, RETRACT_SPEED_F)
 	else:
+		coyote_frames = 10
 		velocity.x = clamp(velocity.x + PLAYER_ACCEL * delta * axis, -MOVE_SPEED, MOVE_SPEED)
 		
 	if is_zero_approx(axis):
@@ -103,8 +108,12 @@ func _physics_process(delta: float) -> void:
 			else:
 				velocity.y = -JUMP_SPEED
 		else:
-			if is_on_floor() or is_on_wall() and !is_zero_approx(axis):
+			if coyote_frames > 0 or is_on_wall() and !is_zero_approx(axis):
 				if is_on_wall() and !is_zero_approx(axis):
+					if(get_wall_normal().x>0):
+						velocity.x=WALLJUMP_SPEED
+					elif(get_wall_normal().x<0):
+						velocity.x=-WALLJUMP_SPEED
 					$GPUParticles2D.emitting = true
 				jump_frames += 1
 				velocity.y = -2 * JUMP_SPEED
@@ -115,6 +124,7 @@ func _physics_process(delta: float) -> void:
 		jump_frames = 0
 		if !grappled:
 			if is_on_wall() and !is_zero_approx(axis):
+				coyote_frames = 10
 				$GPUParticles2D.emitting = true
 				velocity.y = GRAVITY * delta
 			else:
@@ -122,7 +132,7 @@ func _physics_process(delta: float) -> void:
 				velocity.y += GRAVITY * delta
 		
 	if Input.is_action_just_pressed("jump"):
-		if is_on_floor() or is_on_wall() and !is_zero_approx(axis) and !grappled:
+		if is_on_floor() or is_on_wall() and !is_zero_approx(axis) and !grappled or coyote_frames > 0:
 			$Jump.play()
 	move_and_slide()
 	

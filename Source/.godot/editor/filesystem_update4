@@ -1,5 +1,11 @@
 res://LevelG1.tscn
-res://Player.tscn
+res://LevelL1.tscn
 res://TileMapScene.tscn
+res://Player.tscn
 res://LevelTemplate.tscn
 res://Next_level.tscn
+res://scene_manager.tscn
+res://scene_manager.gd
+res://Level.gd
+res://Next_level.gd
+res://Player.gd
