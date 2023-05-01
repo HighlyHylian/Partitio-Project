@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://g6egdn5043j1"]
+[gd_scene load_steps=5 format=3 uid="uid://g6egdn5043j1"]
 
 [ext_resource type="Texture2D" uid="uid://f3wc8speu6m4" path="res://Assets/TileSet.png" id="1_gj4bx"]
-[ext_resource type="Script" path="res://Stage.gd" id="2_vgrjh"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i1uh7"]
 friction = 0.22
@@ -576,6 +575,91 @@ texture = ExtResource("1_gj4bx")
 7:11/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 7:11/0/physics_layer_1/angular_velocity = 0.0
 7:11/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:12/0 = 0
+3:12/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:12/0/physics_layer_0/angular_velocity = 0.0
+3:12/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+3:12/0/physics_layer_1/angular_velocity = 0.0
+3:13/0 = 0
+3:13/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:13/0/physics_layer_0/angular_velocity = 0.0
+3:13/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+3:13/0/physics_layer_1/angular_velocity = 0.0
+5:14/0 = 0
+5:14/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:14/0/physics_layer_0/angular_velocity = 0.0
+5:14/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+5:14/0/physics_layer_1/angular_velocity = 0.0
+6:14/0 = 0
+6:14/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+6:14/0/physics_layer_0/angular_velocity = 0.0
+6:14/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+6:14/0/physics_layer_1/angular_velocity = 0.0
+7:14/0 = 0
+7:14/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+7:14/0/physics_layer_0/angular_velocity = 0.0
+7:14/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+7:14/0/physics_layer_1/angular_velocity = 0.0
+8:14/0 = 0
+8:14/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+8:14/0/physics_layer_0/angular_velocity = 0.0
+8:14/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+8:14/0/physics_layer_1/angular_velocity = 0.0
+8:13/0 = 0
+8:13/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+8:13/0/physics_layer_0/angular_velocity = 0.0
+8:13/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+8:13/0/physics_layer_1/angular_velocity = 0.0
+8:12/0 = 0
+8:12/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+8:12/0/physics_layer_0/angular_velocity = 0.0
+8:12/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+8:12/0/physics_layer_1/angular_velocity = 0.0
+7:12/0 = 0
+7:12/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+7:12/0/physics_layer_0/angular_velocity = 0.0
+7:12/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+7:12/0/physics_layer_1/angular_velocity = 0.0
+6:12/0 = 0
+6:12/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+6:12/0/physics_layer_0/angular_velocity = 0.0
+6:12/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+6:12/0/physics_layer_1/angular_velocity = 0.0
+6:13/0 = 0
+6:13/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+6:13/0/physics_layer_0/angular_velocity = 0.0
+6:13/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+6:13/0/physics_layer_1/angular_velocity = 0.0
+7:13/0 = 0
+7:13/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+7:13/0/physics_layer_0/angular_velocity = 0.0
+7:13/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+7:13/0/physics_layer_1/angular_velocity = 0.0
+5:12/0 = 0
+5:12/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:12/0/physics_layer_0/angular_velocity = 0.0
+5:12/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+5:12/0/physics_layer_1/angular_velocity = 0.0
+4:12/0 = 0
+4:12/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:12/0/physics_layer_0/angular_velocity = 0.0
+4:12/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+4:12/0/physics_layer_1/angular_velocity = 0.0
+5:13/0 = 0
+5:13/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:13/0/physics_layer_0/angular_velocity = 0.0
+5:13/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+5:13/0/physics_layer_1/angular_velocity = 0.0
+4:14/0 = 0
+4:14/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:14/0/physics_layer_0/angular_velocity = 0.0
+4:14/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+4:14/0/physics_layer_1/angular_velocity = 0.0
+3:14/0 = 0
+3:14/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:14/0/physics_layer_0/angular_velocity = 0.0
+3:14/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+3:14/0/physics_layer_1/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_14iq3"]
 physics_layer_0/collision_layer = 1
@@ -587,4 +671,3 @@ sources/0 = SubResource("TileSetAtlasSource_5l8ey")
 [node name="Stage" type="TileMap"]
 tile_set = SubResource("TileSet_14iq3")
 format = 2
-script = ExtResource("2_vgrjh")

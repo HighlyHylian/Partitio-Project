@@ -128,7 +128,8 @@ func _physics_process(delta: float) -> void:
 			if is_on_wall() and !is_zero_approx(axis):
 				coyote_frames = 10
 				$GPUParticles2D.emitting = true
-				velocity.y = GRAVITY * delta
+				if(get_wall_normal().x>0 and axis<-.1 or get_wall_normal().x<0 and axis>.1):
+					velocity.y = GRAVITY * delta
 			else:
 				$GPUParticles2D.emitting = false
 				velocity.y += GRAVITY * delta

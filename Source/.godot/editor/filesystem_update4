@@ -8,3 +8,5 @@ res://Flag.gd
 res://cp_.tscn
 res://Player.gd
 res://Level.gd
+res://Next_level.gd
+res://Stage.gd
