@@ -8,7 +8,7 @@
 script = ExtResource("1_hn7uc")
 
 [node name="PlayerSpawn" type="Node2D" parent="."]
-position = Vector2(4980, -1512)
+position = Vector2(38, -1)
 
 [node name="Player" parent="." instance=ExtResource("2_rte78")]
 position = Vector2(37, 2)
