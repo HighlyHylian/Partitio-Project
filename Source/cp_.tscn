@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dj1jdjtin46pe"]
+
+[ext_resource type="Script" path="res://Flag.gd" id="1_5e2q4"]
+[ext_resource type="Texture2D" uid="uid://b31a1fptanh75" path="res://Assets/Sprites/Flag/CP_not_gotten.png" id="3_iiodx"]
+[ext_resource type="AudioStream" uid="uid://bi2dlbvwlx16t" path="res://Assets/Sounds/Flag/FlagGotten.wav" id="3_l7a37"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_damrq"]
+size = Vector2(32, 57)
+
+[node name="CP_" type="Node2D"]
+script = ExtResource("1_5e2q4")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_damrq")
+
+[node name="flag_base" type="Sprite2D" parent="."]
+texture = ExtResource("3_iiodx")
+
+[node name="Yay" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_l7a37")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cii3ls578gd7w"]
+
+[ext_resource type="Texture2D" uid="uid://cjjpy4rgdplj6" path="res://Assets/opp2_sprites/various/icon_greencheck.png" id="1_h3qqa"]
+[ext_resource type="Script" path="res://Next_level.gd" id="2_smfsx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tivtd"]
+size = Vector2(35.25, 28.125)
+
+[node name="NextLevel" type="Sprite2D"]
+texture = ExtResource("1_h3qqa")
+script = ExtResource("2_smfsx")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_tivtd")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

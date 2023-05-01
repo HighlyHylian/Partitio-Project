@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6oxsl76woj34"]
+
+[ext_resource type="PackedScene" uid="uid://dpcjosde2o03k" path="res://Transition.tscn" id="1_38rpd"]
+[ext_resource type="Script" path="res://scene_manager.gd" id="1_qefws"]
+
+[node name="SceneManager" type="Node2D"]
+script = ExtResource("1_qefws")
+
+[node name="TransitionScene" parent="." instance=ExtResource("1_38rpd")]
+
+[node name="CurrentScene" type="Node" parent="."]
+
+[connection signal="transitioned" from="TransitionScene" to="." method="_on_transition_scene_transitioned"]

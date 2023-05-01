@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://byp770cbfh14o"]
+
+[ext_resource type="Script" path="res://Level.gd" id="1_wmlpy"]
+[ext_resource type="PackedScene" uid="uid://dd3ddx2gv218" path="res://Player.tscn" id="2_o6ue7"]
+[ext_resource type="PackedScene" uid="uid://g6egdn5043j1" path="res://TileMapScene.tscn" id="3_30vud"]
+[ext_resource type="PackedScene" uid="uid://cg4x8rs1c8td6" path="res://Next_level.tscn" id="4_2iyoe"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_wmlpy")
+
+[node name="PlayerSpawn" type="Node2D" parent="."]
+position = Vector2(118, 3)
+
+[node name="Player" parent="." instance=ExtResource("2_o6ue7")]
+
+[node name="Stage" parent="." instance=ExtResource("3_30vud")]
+position = Vector2(-1, -1)
+layer_0/tile_data = PackedInt32Array(458749, 262144, 4, 458750, 262144, 4, 458751, 262144, 4, 458752, 262144, 4, 458753, 262144, 4, 458754, 262144, 4, 655366, 0, 3, 655367, 0, 3, 720903, 0, 3, 720904, 0, 3, 851979, 0, 3, 851980, 0, 3, 917516, 0, 3, 917517, 0, 3, 1114127, 0, 3, 1179663, 0, 3, 1245199, 0, 3, 1310735, 0, 3, 1376271, 0, 3, 1048579, 0, 3, 1048580, 0, 3, 1048581, 0, 3, 1114116, 0, 3, 1376254, 0, 3, 1441790, 0, 3, 1441789, 0, 3, 1507325, 0, 3, 1441800, 0, 3, 1507336, 0, 3, 1507337, 0, 3, 1441801, 0, 3, 1769474, 0, 3, 1835010, 0, 3, 1900546, 0, 3, 1900547, 0, 3, 2162702, 0, 3, 1900554, 262144, 1, 1900555, 262144, 1, 1900556, 262144, 1, 1966093, 262144, 1, 1966094, 262144, 1, 1966095, 262144, 1, 1966096, 262144, 1, 1966097, 262144, 1, 786426, 262144, 1, 851962, 262144, 1, 851963, 262144, 1, 851964, 262144, 1, 851965, 262144, 1, 917502, 262144, 1, 917503, 262144, 1, 851968, 262144, 1, 851969, 262144, 1, 851970, 262144, 1, 851971, 262144, 1, 851972, 262144, 1, 917509, 262144, 1, 917510, 262144, 1, 917511, 262144, 1, 917512, 262144, 1, 983048, 262144, 1, 983049, 262144, 1, 1048585, 262144, 1, 1114121, 262144, 1, 1179657, 262144, 1, 1179658, 262144, 1, 1179659, 262144, 1, 1245196, 262144, 1, 1310732, 262144, 1, 1376268, 262144, 1, 1441804, 262144, 1, 1507340, 262144, 1, 1507339, 262144, 1, 1572875, 262144, 1, 1638411, 262144, 1, 1703947, 262144, 1, 1769483, 262144, 1, 1835019, 262144, 1)
+
+[node name="NextLevel" parent="." instance=ExtResource("4_2iyoe")]
+position = Vector2(0, 76)
+
+[connection signal="died" from="Player" to="." method="_on_player_died"]
+[connection signal="switch_levels_now" from="NextLevel" to="." method="_on_next_level_switch_levels_now"]

@@ -16,14 +16,17 @@ const RETRACT_SPEED_I: float = 0
 const RETRACT_SPEED_F: float = SIZE * 12
 const GRAPPLED_SPEED: float = SIZE * 9
 const RETRACT_ACCEL: float = SIZE * 50
+const WALLJUMP_SPEED:int = 150
 
+var coyote_frames: int = 0
 var jumping: bool = false
 var jump_frames: int = 0
-var grappled: bool = false
+@export var grappled: bool = false
 var grapple_point: Vector2
 var grapple_target: Node2D
-var retracting: bool = false
-var controller: bool = false
+@export var retracting: bool = false
+var retracted: bool = false
+@export var controller: bool = false
 var is_aiming: bool = false
 var can_slide: bool = true
 @onready var ray: RayCast2D = $RayCast2D
@@ -33,17 +36,19 @@ func _ready() -> void:
 
 func _draw() -> void:
 	if is_aiming or !controller or grappled:
-		var c := Color(1, 0, 0, 0.25)
+		var c := Color(1, 0, 0, .25)
 		var p := ray.target_position
 		if grappled:
-			c = Color.RED
+			c = Color.GREEN
 			p = to_local(grapple_point)
 		elif ray.is_colliding():
-			c = Color.DARK_RED
+			c = Color.DARK_GREEN
 			p = to_local(ray.get_collision_point())
 		draw_line(Vector2.ZERO, p, c)
 
 func _process(_delta: float) -> void:
+	$Camera2D.position.x = int($Camera2D.position.x)
+	$Camera2D.position.y = int($Camera2D.position.y)
 	if Input.is_action_just_pressed("switch_controls"):
 		controller = !controller
 	queue_redraw()
@@ -64,7 +69,7 @@ func _physics_process(delta: float) -> void:
 	
 	
 	
-	var retracted: bool = Input.is_action_pressed("grapple")
+	retracted = Input.is_action_pressed("grapple")
 	var axis: float = Input.get_axis("left", "right")
 	
 	
@@ -85,10 +90,13 @@ func _physics_process(delta: float) -> void:
 #			velocity = velocity.normalized() * RETRACT_SPEED_F
 #		move_and_slide()
 #		return
+
+	coyote_frames = coyote_frames - 1
 	
 	if !is_on_floor():
 		velocity.x = clamp(velocity.x + PLAYER_AIR_ACCEL * delta * axis, -RETRACT_SPEED_F, RETRACT_SPEED_F)
 	else:
+		coyote_frames = 10
 		velocity.x = clamp(velocity.x + PLAYER_ACCEL * delta * axis, -MOVE_SPEED, MOVE_SPEED)
 		
 	if is_zero_approx(axis):
@@ -102,30 +110,42 @@ func _physics_process(delta: float) -> void:
 			else:
 				velocity.y = -JUMP_SPEED
 		else:
-			if is_on_floor() or is_on_wall() and !is_zero_approx(axis):
+			if coyote_frames > 0 or is_on_wall() and !is_zero_approx(axis):
+				if is_on_wall() and !is_zero_approx(axis):
+					if(get_wall_normal().x>0):
+						velocity.x=WALLJUMP_SPEED
+					elif(get_wall_normal().x<0):
+						velocity.x=-WALLJUMP_SPEED
+					$GPUParticles2D.emitting = true
 				jump_frames += 1
 				velocity.y = -2 * JUMP_SPEED
 			else:
+				$GPUParticles2D.emitting = false
 				velocity.y += GRAVITY * delta
 	else:
 		jump_frames = 0
 		if !grappled:
 			if is_on_wall() and !is_zero_approx(axis):
+				coyote_frames = 10
 				$GPUParticles2D.emitting = true
-				velocity.y = GRAVITY * delta
+				if(get_wall_normal().x>0 and axis<-.1 or get_wall_normal().x<0 and axis>.1):
+					velocity.y = GRAVITY * delta
 			else:
 				$GPUParticles2D.emitting = false
 				velocity.y += GRAVITY * delta
 		
 	if Input.is_action_just_pressed("jump"):
-		if is_on_floor() or is_on_wall() and !is_zero_approx(axis) and !grappled:
+		if is_on_floor() or is_on_wall() and !is_zero_approx(axis) and !grappled or coyote_frames > 0:
 			$Jump.play()
-	
 	move_and_slide()
 	
 
 
 @warning_ignore("unused_parameter")
 func _on_area_2d_body_entered(body):
-	died.emit()
+	emit_signal("died")
+	retracting = false
+	grappled = false
+	retracted = false
+	velocity = Vector2.ZERO
 
