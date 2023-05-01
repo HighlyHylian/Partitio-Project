@@ -47,6 +47,8 @@ func _draw() -> void:
 		draw_line(Vector2.ZERO, p, c)
 
 func _process(_delta: float) -> void:
+	$Camera2D.position.x = int($Camera2D.position.x)
+	$Camera2D.position.y = int($Camera2D.position.y)
 	if Input.is_action_just_pressed("switch_controls"):
 		controller = !controller
 	queue_redraw()
