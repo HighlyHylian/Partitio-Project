@@ -77,6 +77,7 @@ stream = ExtResource("3_y0scs")
 
 [node name="Click" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_j6usl")
+volume_db = 9.853
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(0.696064, 8.35276)
