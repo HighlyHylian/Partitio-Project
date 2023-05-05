@@ -6,8 +6,9 @@ var sceneNo: int = 0
 
 const tutorialScene = preload("res://LevelL1.tscn")
 const level1 = preload("res://LevelG1.tscn")
+const level2 = preload("res://LevelL2.tscn")
 
-var sceneArray = [0,tutorialScene,level1]
+var sceneArray = [0,tutorialScene,level1,level2]
 
 var max_scene_no = sceneArray.size()
 
@@ -29,7 +30,7 @@ func _on_transition_scene_transitioned():
 		scene.switch_levels.connect(on_switch_levels)
 		var useController = false
 		if(sceneNo !=1):
-			useController = $CurrentScene/Level/Player.controller
+			useController = $CurrentScene.get_child(0).get_child(0).controller
 			$CurrentScene.get_child(0).queue_free()
 		$CurrentScene.add_child(scene)
 		$CurrentScene.get_child(0).get_child(0).controller = useController
