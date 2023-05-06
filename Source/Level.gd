@@ -3,7 +3,7 @@ extends Node2D
 signal switch_levels
 
 func _ready():
-	$Music.set_volume_db(3)
+	$Music.set_volume_db(0)
 	$Music.play()
 
 func _on_player_died():

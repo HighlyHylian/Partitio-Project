@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2dx2kisn6hqj"]
+[gd_scene load_steps=3 format=3 uid="uid://dp4kj1v32h2w5"]
 
 [ext_resource type="Script" path="res://Mainmenu.gd" id="1_r4a00"]
 [ext_resource type="FontFile" uid="uid://d1rytgd51dlut" path="res://Quinquefive-ALoRM.ttf" id="2_2lnlc"]

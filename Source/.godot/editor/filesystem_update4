@@ -7,3 +7,5 @@ res://LevelL1.tscn
 res://cp_.tscn
 res://LevelL2.tscn
 res://Mainmenu.tscn
+res://Next_level.gd
+res://Level.gd
