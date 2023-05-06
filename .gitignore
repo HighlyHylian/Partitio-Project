@@ -11,3 +11,5 @@ Source/.godot/editor/filesystem_cache8
 Source/.godot/editor/filesystem_cache8
 Source/.godot/editor/filesystem_cache8
 *.cfg
+Source/.godot/editor/script_editor_cache.cfg
+Source/.godot/editor/filesystem_cache8
