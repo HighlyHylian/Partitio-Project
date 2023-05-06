@@ -9,3 +9,6 @@ res://LevelL2.tscn
 res://Mainmenu.tscn
 res://Next_level.gd
 res://Level.gd
+res://Mainmenu.gd
+res://CanvasLayer.gd
+res://Transition.tscn
