@@ -18,3 +18,6 @@ func _on_cp__gotten(position):
 	$PlayerSpawn.position = position
 
 
+
+func _on_music_finished():
+	$Music.play()
