@@ -2,9 +2,8 @@ extends Node2D
 
 signal switch_levels
 
-func _ready():
-	$Music.set_volume_db(3)
-	$Music.play()
+
+
 
 func _on_player_died():
 	$Player.global_position = $PlayerSpawn.global_position
@@ -16,5 +15,5 @@ func _on_next_level_switch_levels_now():
 func _on_cp__gotten(position):
 	$PlayerSpawn.position = position
 
-func _on_music_finished():
-	$Music.play()
+
+

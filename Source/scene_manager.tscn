@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://scene_manager.gd" id="1_qefws"]
 
 [node name="SceneManager" type="Node2D"]
+position = Vector2(0, 3)
 script = ExtResource("1_qefws")
 
 [node name="TransitionScene" parent="." instance=ExtResource("1_38rpd")]

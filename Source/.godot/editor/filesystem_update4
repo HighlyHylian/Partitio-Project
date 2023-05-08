@@ -1,3 +1,4 @@
+res://LevelT1.tscn
 res://Player.tscn
 res://TileMapScene.tscn
 res://LevelG1.tscn
@@ -7,3 +8,4 @@ res://LevelL1.tscn
 res://cp_.tscn
 res://LevelL2.tscn
 res://scene_manager.tscn
+res://Level.gd
