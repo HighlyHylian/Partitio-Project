@@ -18,7 +18,8 @@ position = Vector2(118, 3)
 [node name="NextLevel" parent="." instance=ExtResource("4_xi3gj")]
 position = Vector2(0, 76)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="."]
 
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="switch_levels_now" from="NextLevel" to="." method="_on_next_level_switch_levels_now"]
+[connection signal="finished" from="Music" to="." method="_on_music_finished"]
