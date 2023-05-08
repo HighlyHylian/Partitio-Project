@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjb33woklo04t"]
+[gd_scene load_steps=6 format=3 uid="uid://ddwtd58n0fsir"]
 
 [ext_resource type="Script" path="res://Level.gd" id="1_jpup3"]
 [ext_resource type="PackedScene" uid="uid://dd3ddx2gv218" path="res://Player.tscn" id="2_n71cw"]
 [ext_resource type="PackedScene" uid="uid://g6egdn5043j1" path="res://TileMapScene.tscn" id="3_c51gh"]
 [ext_resource type="PackedScene" uid="uid://cii3ls578gd7w" path="res://Next_level.tscn" id="4_kx51n"]
+[ext_resource type="AudioStream" uid="uid://c0k1wc3t34t8o" path="res://Assets/Sounds/Music/8-Bit_Theme.mp3" id="5_6ecm7"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_jpup3")
@@ -20,6 +21,9 @@ layer_0/tile_data = PackedInt32Array(131071, 262144, 4, 65536, 262144, 4, 65537,
 
 [node name="NextLevel" parent="." instance=ExtResource("4_kx51n")]
 position = Vector2(9195, -354)
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_6ecm7")
 
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="switch_levels_now" from="NextLevel" to="." method="_on_next_level_switch_levels_now"]
