@@ -10,3 +10,5 @@ func _on_area_2d_body_entered(body):
 		$flag_base.texture = image
 		$Yay.play()
 		is_collected = true
+
+

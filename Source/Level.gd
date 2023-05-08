@@ -18,4 +18,3 @@ func _on_cp__gotten(position):
 	$PlayerSpawn.position = position
 
 
-

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dd3ddx2gv218" path="res://Player.tscn" id="2_rte78"]
 [ext_resource type="PackedScene" uid="uid://g6egdn5043j1" path="res://TileMapScene.tscn" id="3_2h7em"]
 [ext_resource type="PackedScene" uid="uid://dj1jdjtin46pe" path="res://cp_.tscn" id="5_sc181"]
-[ext_resource type="AudioStream" uid="uid://c0k1wc3t34t8o" path="res://Assets/Sounds/Music/8-Bit_Theme.mp3" id="6_4pf7m"]
+[ext_resource type="AudioStream" uid="uid://baba7k6mfedbe" path="res://Assets/Sounds/Music/Track_2.mp3" id="6_if4o4"]
 [ext_resource type="PackedScene" uid="uid://cii3ls578gd7w" path="res://Next_level.tscn" id="7_0cmav"]
 
 [node name="Level" type="Node2D"]
@@ -35,7 +35,7 @@ layer_0/tile_data = PackedInt32Array(131071, 262144, 3, 65536, 262144, 3, 65537,
 position = Vector2(4957, -1473)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_4pf7m")
+stream = ExtResource("6_if4o4")
 
 [node name="CP_2" parent="." instance=ExtResource("5_sc181")]
 position = Vector2(2606, -273)
