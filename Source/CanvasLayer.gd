@@ -7,6 +7,7 @@ signal transitioned_to_clear
 	
 func transition_to_black():
 	$AnimationPlayer.play("fade_to_black")
+	# check
 
 func transition_to_clear():
 	$AnimationPlayer.play("fade_to_normal")
