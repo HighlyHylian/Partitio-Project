@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dd3ddx2gv218"]
+[gd_scene load_steps=11 format=3 uid="uid://dd3ddx2gv218"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_yy8oy"]
 [ext_resource type="Texture2D" uid="uid://c08fs1xyd6lpl" path="res://Assets/Player.png" id="2_5rsn3"]
 [ext_resource type="AudioStream" uid="uid://bv8qbxnmr25oc" path="res://Assets/Sounds/Player/jump.wav" id="3_y0scs"]
 [ext_resource type="AudioStream" uid="uid://kldu36wrps18" path="res://Assets/Sounds/Player/click.wav" id="4_j6usl"]
+[ext_resource type="AudioStream" uid="uid://cvpim4xcmoew7" path="res://Assets/Sounds/Player/hitHurt.wav" id="5_mfq5f"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7lmvi"]
 animations = [{
@@ -84,5 +85,8 @@ position = Vector2(0.696064, 8.35276)
 emitting = false
 amount = 26
 process_material = SubResource("ParticleProcessMaterial_4bowt")
+
+[node name="Dead" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_mfq5f")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

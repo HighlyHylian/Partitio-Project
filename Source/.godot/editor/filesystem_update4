@@ -1,5 +1,3 @@
-res://level_select.gd
-res://level_select.tscn
 res://Player.tscn
 res://TileMapScene.tscn
 res://LevelG1.tscn
@@ -10,4 +8,4 @@ res://cp_.tscn
 res://LevelL2.tscn
 res://Mainmenu.tscn
 res://Transition.tscn
-res://LevelT1.tscn
+res://Level.gd
